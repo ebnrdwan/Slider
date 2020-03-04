@@ -8,6 +8,7 @@
 
     <alirezat775.lib.carouselview.CarouselView
             android:id="@+id/carousel_view"
+        android:layout_margin="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

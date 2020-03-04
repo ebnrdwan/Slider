@@ -1,5 +1,6 @@
 package alirezat775.lib.carouselview
 
+import alirezat775.lib.carouselview.helper.fade
 import android.content.Context
 import android.graphics.PointF
 import android.util.DisplayMetrics
@@ -7,15 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 
-/**
- * Author:  Alireza Tizfahm Fard
- * Date:    12/7/17
- * Email:   alirezat775@gmail.com
- */
+
 class CarouselLayoutManager(context: Context?, orientation: Int, reverseLayout: Boolean) :
     LinearLayoutManager(context, orientation, reverseLayout) {
 
-    private val shrinkAmount = 0.15f
+    private val shrinkAmount = 0.4f
     private val shrinkDistance = 0.9f
     private var smoothScroller: SmoothScroller? = null
 
@@ -73,6 +70,7 @@ class CarouselLayoutManager(context: Context?, orientation: Int, reverseLayout: 
                     val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
                     child.scaleX = scale
                     child.scaleY = scale
+
                 }
             }
             return scrolled
@@ -97,6 +95,7 @@ class CarouselLayoutManager(context: Context?, orientation: Int, reverseLayout: 
                 val d1 = shrinkDistance * midpoint
                 val s0 = 1f
                 val s1 = 1f - shrinkAmount
+//                getChildAt(0)?.fade(fadeout = true, fadedOut = 0.f)
                 for (i in 0 until childCount) {
                     val child = getChildAt(i)
                     val childMidpoint = (getDecoratedRight(child!!) + getDecoratedLeft(child)) / 2f
@@ -104,7 +103,9 @@ class CarouselLayoutManager(context: Context?, orientation: Int, reverseLayout: 
                     val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
                     child.scaleX = scale
                     child.scaleY = scale
+//                    child.fade(fadeout = true, fadedOut = scale)
                 }
+
             }
             return scrolled
         } else {

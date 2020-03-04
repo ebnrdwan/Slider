@@ -4,6 +4,7 @@ import alirezat775.lib.carouselview.CarouselAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.item_carousel.view.*
 import kotlinx.android.synthetic.main.item_empty_carousel.view.*
@@ -51,7 +52,7 @@ class SampleAdapter : CarouselAdapter() {
             is MyViewHolder -> {
                 vh = holder
                 val model = getItems()[position] as SampleModel
-                (vh as MyViewHolder).title.text = model.getId().toString()
+                (vh as MyViewHolder).icon.setImageResource(model.imageId())
             }
             else -> {
                 vh = holder
@@ -63,10 +64,10 @@ class SampleAdapter : CarouselAdapter() {
 
     inner class MyViewHolder(itemView: View) : CarouselViewHolder(itemView) {
 
-        var title: TextView = itemView.item_text
+        var icon: ImageView = itemView.imgContinent
 
         init {
-            title.setOnClickListener { onClick?.click(getItems()[adapterPosition] as SampleModel) }
+            icon.setOnClickListener { onClick?.click(getItems()[adapterPosition] as SampleModel) }
         }
 
     }

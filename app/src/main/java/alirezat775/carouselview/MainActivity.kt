@@ -21,17 +21,18 @@ class MainActivity : AppCompatActivity() {
         val adapter = SampleAdapter()
         val carousel = Carousel(this, carousel_view, adapter)
         carousel.setOrientation(CarouselView.HORIZONTAL, false)
-        carousel.autoScroll(true, 5000, true)
+        carousel.autoScroll(false, 5000, true)
         carousel.scaleView(true)
         carousel.lazyLoad(true, object : CarouselLazyLoadListener {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: CarouselView) {
                 if (hasNextPage) {
                     Log.d(TAG, "load new item on lazy mode")
-                    carousel.add(SampleModel(11))
-                    carousel.add(SampleModel(12))
-                    carousel.add(SampleModel(13))
-                    carousel.add(SampleModel(14))
-                    carousel.add(SampleModel(15))
+                    carousel.add(SampleModel(R.drawable.ic_africa))
+                    carousel.add(SampleModel(R.drawable.ic_asia))
+                    carousel.add(SampleModel(R.drawable.ic_australia))
+                    carousel.add(SampleModel(R.drawable.ic_europe))
+                    carousel.add(SampleModel(R.drawable.ic_south_america))
+                    carousel.add(SampleModel(R.drawable.ic_north_america))
                     hasNextPage = false
                 }
             }
@@ -55,16 +56,12 @@ class MainActivity : AppCompatActivity() {
         })
 
 //        carousel.add(EmptySampleModel("empty list"))
-        carousel.add(SampleModel(1))
-        carousel.add(SampleModel(2))
-        carousel.add(SampleModel(3))
-        carousel.add(SampleModel(4))
-        carousel.add(SampleModel(5))
-        carousel.add(SampleModel(6))
-        carousel.add(SampleModel(7))
-        carousel.add(SampleModel(8))
-        carousel.add(SampleModel(9))
-        carousel.add(SampleModel(10))
+        carousel.add(SampleModel(R.drawable.ic_africa))
+        carousel.add(SampleModel(R.drawable.ic_asia))
+        carousel.add(SampleModel(R.drawable.ic_australia))
+        carousel.add(SampleModel(R.drawable.ic_europe))
+        carousel.add(SampleModel(R.drawable.ic_south_america))
+        carousel.add(SampleModel(R.drawable.ic_north_america))
 
 
     }
