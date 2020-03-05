@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="128dp"
-    android:layout_height="128dp">
+    android:layout_width="300dp"
+    android:layout_height="128dp"
+    android:orientation="vertical">
 
     <View
         android:id="@+id/border_view"
@@ -17,6 +16,6 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:layout_margin="16dp"
-        app:srcCompat="@drawable/ic_africa" />
+        android:src="@drawable/ic_africa" />
 
 </RelativeLayout>

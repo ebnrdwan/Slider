@@ -9,14 +9,12 @@ import android.view.View
 import androidx.annotation.IntDef
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
-
-
+import kotlin.math.abs
 
 class SliderRecyclerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
     RecyclerView(context, attrs, defStyle) {
 
     var listener: SliderListener? = null
-
     private var velocityTracker: VelocityTracker? = null
     var currentPosition: Int = 0
     private var actionDown = true
@@ -256,7 +254,7 @@ class SliderRecyclerView @JvmOverloads constructor(context: Context, attrs: Attr
             for (i in firstVisibleItemPosition + 1..lastVisibleItemPosition) {
                 val view = manager.findViewByPosition(i)
                 val distanceToCenter = parentAnchor - getViewAnchor(view)
-                if (Math.abs(distanceToCenter) < Math.abs(currentViewClosestToAnchorDistance)) {
+                if (abs(distanceToCenter) < abs(currentViewClosestToAnchorDistance)) {
                     currentViewClosestToAnchorPosition = i
                     currentViewClosestToAnchorDistance = distanceToCenter
                 }

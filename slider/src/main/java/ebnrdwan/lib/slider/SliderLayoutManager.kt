@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 
 
-class SliderLayoutManager(context: Context?, orientation: Int, reverseLayout: Boolean) :
+ class SliderLayoutManager(context: Context?, orientation: Int, reverseLayout: Boolean) :
     LinearLayoutManager(context, orientation, reverseLayout) {
 
     private val shrinkAmount = 0.4f
