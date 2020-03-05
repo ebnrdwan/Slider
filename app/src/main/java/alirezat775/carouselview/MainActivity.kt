@@ -27,19 +27,19 @@ class MainActivity : AppCompatActivity() {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: CarouselView) {
                 if (hasNextPage) {
                     Log.d(TAG, "load new item on lazy mode")
-                    carousel.add(SampleModel(R.drawable.ic_africa))
-                    carousel.add(SampleModel(R.drawable.ic_asia))
+//                    carousel.add(SampleModel(R.drawable.border_selection))
+             /*       carousel.add(SampleModel(R.drawable.ic_asia))
                     carousel.add(SampleModel(R.drawable.ic_australia))
                     carousel.add(SampleModel(R.drawable.ic_europe))
                     carousel.add(SampleModel(R.drawable.ic_south_america))
-                    carousel.add(SampleModel(R.drawable.ic_north_america))
+                    carousel.add(SampleModel(R.drawable.ic_north_america))*/
                     hasNextPage = false
                 }
             }
         })
         adapter.setOnClickListener(object : SampleAdapter.OnClick {
             override fun click(model: SampleModel) {
-                carousel.remove(model)
+//                carousel.remove(model)
             }
         })
 //        carousel.scrollSpeed(100f)
@@ -56,12 +56,18 @@ class MainActivity : AppCompatActivity() {
         })
 
 //        carousel.add(EmptySampleModel("empty list"))
+//        carousel.add(SampleModel(R.drawable.border_selection))
         carousel.add(SampleModel(R.drawable.ic_africa))
+        carousel.add(SampleModel(R.drawable.ic_africa))
+        carousel.add(SampleModel(R.drawable.ic_africa))
+        carousel.add(SampleModel(R.drawable.ic_africa))
+        carousel.add(SampleModel(R.drawable.ic_africa))
+/*
         carousel.add(SampleModel(R.drawable.ic_asia))
         carousel.add(SampleModel(R.drawable.ic_australia))
         carousel.add(SampleModel(R.drawable.ic_europe))
         carousel.add(SampleModel(R.drawable.ic_south_america))
-        carousel.add(SampleModel(R.drawable.ic_north_america))
+        carousel.add(SampleModel(R.drawable.ic_north_america))*/
 
 
     }

@@ -5,6 +5,7 @@
     android:layout_height="128dp">
 
     <View
+        android:id="@+id/border_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/border_selection" />

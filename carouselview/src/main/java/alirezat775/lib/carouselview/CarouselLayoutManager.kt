@@ -1,9 +1,9 @@
 package alirezat775.lib.carouselview
 
-import alirezat775.lib.carouselview.helper.fade
 import android.content.Context
 import android.graphics.PointF
 import android.util.DisplayMetrics
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
@@ -95,7 +95,6 @@ class CarouselLayoutManager(context: Context?, orientation: Int, reverseLayout: 
                 val d1 = shrinkDistance * midpoint
                 val s0 = 1f
                 val s1 = 1f - shrinkAmount
-//                getChildAt(0)?.fade(fadeout = true, fadedOut = 0.f)
                 for (i in 0 until childCount) {
                     val child = getChildAt(i)
                     val childMidpoint = (getDecoratedRight(child!!) + getDecoratedLeft(child)) / 2f
@@ -103,7 +102,9 @@ class CarouselLayoutManager(context: Context?, orientation: Int, reverseLayout: 
                     val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
                     child.scaleX = scale
                     child.scaleY = scale
-//                    child.fade(fadeout = true, fadedOut = scale)
+
+                    fadeBorder(child, scale, 0.5f)
+                    fadeView(child, scale, 0.3f)
                 }
 
             }
@@ -111,6 +112,22 @@ class CarouselLayoutManager(context: Context?, orientation: Int, reverseLayout: 
         } else {
             return 0
         }
+    }
+
+    private fun fadeBorder(view: View, alpha: Float, subtractade: Float) {
+        val border = view.findViewById<View>(R.id.border_view)
+        if (alpha in 0.9f..1.0f)
+            border?.alpha = alpha
+        else border?.alpha = 0.0f
+
+    }
+
+    private fun fadeView(view: View, alpha: Float, subtractade: Float) {
+
+        if (alpha in 0.75f..1.0f)
+            view.alpha = alpha
+        else view.alpha = alpha - subtractade
+
     }
 
     /**

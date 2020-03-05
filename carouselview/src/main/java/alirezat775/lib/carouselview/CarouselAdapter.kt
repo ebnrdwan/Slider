@@ -13,11 +13,6 @@ import android.view.animation.OvershootInterpolator
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
-/**
- * Author:  Alireza Tizfahm Fard
- * Date:    2019-06-14
- * Email:   alirezat775@gmail.com
- */
 
 abstract class CarouselAdapter : RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
 
@@ -31,7 +26,6 @@ abstract class CarouselAdapter : RecyclerView.Adapter<CarouselAdapter.CarouselVi
     private var items: MutableList<CarouselModel> = ArrayList()
 
     private fun imageOption(view: View) {
-
         view.layoutParams.width = Math.round(ViewHelper.getScreenWidth().toDouble()).toInt()
         view.layoutParams.height = Math.round(view.layoutParams.width * 0.60).toInt()
         view.requestLayout()
@@ -64,10 +58,6 @@ abstract class CarouselAdapter : RecyclerView.Adapter<CarouselAdapter.CarouselVi
         return items
     }
 
-    /**
-     * @param item      instance CarouselModel
-     * @param operation action add or remove
-     */
     fun operation(item: CarouselModel, operation: Int) {
         when (operation) {
             ADD -> add(item)
@@ -80,11 +70,6 @@ abstract class CarouselAdapter : RecyclerView.Adapter<CarouselAdapter.CarouselVi
         notifyDataSetChanged()
     }
 
-    /**
-     * add item to list and notifyDataSetChanged adapter
-     *
-     * @param item instance CarouselModel
-     */
     private fun add(item: CarouselModel) {
         recyclerView.post {
             notifyItemInserted(itemCount - 1)
@@ -92,11 +77,6 @@ abstract class CarouselAdapter : RecyclerView.Adapter<CarouselAdapter.CarouselVi
         }
     }
 
-    /**
-     * remove item from list and notifyDataSetChanged adapter
-     *
-     * @param item instance CarouselModel
-     */
     private fun remove(item: CarouselModel) {
         notifyItemRemoved(getItems().indexOf(item))
         getItems().remove(item)
