@@ -18,7 +18,6 @@ class SliderRecyclerView @JvmOverloads constructor(context: Context, attrs: Attr
     var listener: SliderListener? = null
 
     private var velocityTracker: VelocityTracker? = null
-
     var currentPosition: Int = 0
     private var actionDown = true
     var isAutoScroll = false
