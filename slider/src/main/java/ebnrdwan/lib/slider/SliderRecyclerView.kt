@@ -290,7 +290,7 @@ class SliderRecyclerView @JvmOverloads constructor(context: Context, attrs: Attr
 
     companion object {
 
-        //carousel orientation
+        //slider orientation
         const val HORIZONTAL = 0
         const val VERTICAL = 1
 

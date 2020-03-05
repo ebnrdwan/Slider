@@ -1,4 +1,4 @@
-package alirezat775.carouselview
+package ebnrdwan.slider
 
 import ebnrdwan.lib.slider.ISliderModel
 

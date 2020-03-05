@@ -1,4 +1,4 @@
-package alirezat775.carouselview
+package ebnrdwan.slider
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter

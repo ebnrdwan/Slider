@@ -1,13 +1,14 @@
-package alirezat775.carouselview
+package ebnrdwan.slider
 
+import alirezat775.sliderview.R
 import ebnrdwan.lib.slider.SliderAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import kotlinx.android.synthetic.main.item_carousel.view.*
-import kotlinx.android.synthetic.main.item_empty_carousel.view.*
+import kotlinx.android.synthetic.main.item_slider.view.*
+import kotlinx.android.synthetic.main.item_empty_slider.view.*
 
 class SampleAdapter : SliderAdapter() {
 
@@ -31,11 +32,11 @@ class SampleAdapter : SliderAdapter() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SliderViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return if (viewType == NORMAL_ITEM) {
-            val v = inflater.inflate(R.layout.item_carousel, parent, false)
+            val v = inflater.inflate(R.layout.item_slider, parent, false)
             vh = MyViewHolder(v)
             vh as MyViewHolder
         } else {
-            val v = inflater.inflate(R.layout.item_empty_carousel, parent, false)
+            val v = inflater.inflate(R.layout.item_empty_slider, parent, false)
             vh = EmptyMyViewHolder(v)
             vh as EmptyMyViewHolder
         }

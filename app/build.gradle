@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "alirezat775.carouselview"
+        applicationId "alirezat775.sliderview"
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 1

@@ -96,14 +96,14 @@ class SliderComponent constructor(
     }
 
     /**
-     * @param items list items should be add to carousel
+     * @param items list items should be add to slider
      */
     fun addAll(items: MutableList<ISliderModel>) {
         adapter.addAll(items)
     }
 
     /**
-     * @param item one item should be add to carousel
+     * @param item one item should be add to slider
      */
     fun add(item: ISliderModel) {
         adapter.operation(item,
@@ -112,7 +112,7 @@ class SliderComponent constructor(
     }
 
     /**
-     * @param item list items should be remove to carousel
+     * @param item list items should be remove to slider
      */
     fun remove(item: ISliderModel) {
         adapter.operation(item,
