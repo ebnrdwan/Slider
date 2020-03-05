@@ -1,4 +1,4 @@
-package alirezat775.lib.carouselview
+package ebnrdwan.lib.slider
 
 import android.content.Context
 import android.graphics.PointF
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CarouselLayoutManager(context: Context?, orientation: Int, reverseLayout: Boolean) :
+class SliderLayoutManager(context: Context?, orientation: Int, reverseLayout: Boolean) :
     LinearLayoutManager(context, orientation, reverseLayout) {
 
     private val shrinkAmount = 0.4f
@@ -161,7 +161,7 @@ class CarouselLayoutManager(context: Context?, orientation: Int, reverseLayout: 
          * @return
          */
         override fun computeScrollVectorForPosition(targetPosition: Int): PointF? {
-            return this@CarouselLayoutManager.computeScrollVectorForPosition(targetPosition)
+            return this@SliderLayoutManager.computeScrollVectorForPosition(targetPosition)
         }
 
         /**

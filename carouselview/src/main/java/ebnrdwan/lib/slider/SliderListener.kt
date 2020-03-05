@@ -1,7 +1,7 @@
-package alirezat775.lib.carouselview
+package ebnrdwan.lib.slider
 
 
-interface CarouselListener {
+interface SliderListener {
     /**
      * @param position current position
      */

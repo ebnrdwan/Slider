@@ -1,4 +1,4 @@
-package alirezat775.lib.carouselview
+package ebnrdwan.lib.slider
 
 import android.content.Context
 import androidx.test.InstrumentationRegistry
@@ -21,6 +21,6 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
 
-        assertEquals("alirezat775.lib.carouselview.test", appContext.getPackageName())
+        assertEquals("ebnrdwan.lib.slider.test", appContext.getPackageName())
     }
 }

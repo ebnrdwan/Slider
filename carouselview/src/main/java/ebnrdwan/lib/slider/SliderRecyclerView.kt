@@ -1,4 +1,4 @@
-package alirezat775.lib.carouselview
+package ebnrdwan.lib.slider
 
 import android.content.Context
 import android.os.CountDownTimer
@@ -8,25 +8,14 @@ import android.view.VelocityTracker
 import android.view.View
 import androidx.annotation.IntDef
 import androidx.core.view.ViewCompat
-import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 
-/**
- * Author:  Alireza Tizfahm Fard
- * Date:    12/7/17
- * Email:   alirezat775@gmail.com
- */
 
-class CarouselView
-/**
- * @param context  current context, will be used to access resources
- * @param attrs    attributeSet
- * @param defStyle defStyle
- */
-@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
+
+class SliderRecyclerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
     RecyclerView(context, attrs, defStyle) {
 
-    var listener: CarouselListener? = null
+    var listener: SliderListener? = null
 
     private var velocityTracker: VelocityTracker? = null
 
@@ -52,11 +41,9 @@ class CarouselView
      * @return support RTL view
      */
     private val isRTL: Boolean
-        get() = ViewCompat.getLayoutDirection(this@CarouselView) == ViewCompat.LAYOUT_DIRECTION_RTL
+        get() = ViewCompat.getLayoutDirection(this@SliderRecyclerView) == ViewCompat.LAYOUT_DIRECTION_RTL
 
-    /**
-     * @return support RTL view
-     */
+
     private val isTrustLayout: Boolean
         get() {
             if (isRTL && manager.reverseLayout) {
@@ -74,8 +61,8 @@ class CarouselView
     /**
      * @return layoutManager
      */
-    val manager: CarouselLayoutManager
-        get() = layoutManager as CarouselLayoutManager
+    val manager: SliderLayoutManager
+        get() = layoutManager as SliderLayoutManager
 
     /**
      * @param adapter the new adapter to set, or null to set no adapter
@@ -313,7 +300,10 @@ class CarouselView
 
     }
 
-    @IntDef(VERTICAL, HORIZONTAL)
+    @IntDef(
+        VERTICAL,
+        HORIZONTAL
+    )
     @Retention(AnnotationRetention.SOURCE)
-    annotation class CarouselOrientation
+    annotation class SliderOrientation
 }

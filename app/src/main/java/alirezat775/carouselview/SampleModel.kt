@@ -1,8 +1,8 @@
 package alirezat775.carouselview
 
-import alirezat775.lib.carouselview.CarouselModel
+import ebnrdwan.lib.slider.ISliderModel
 
-class SampleModel constructor(private var id: Int) : CarouselModel() {
+class SampleModel constructor(private var id: Int) : ISliderModel {
 
     fun imageId(): Int {
         return id

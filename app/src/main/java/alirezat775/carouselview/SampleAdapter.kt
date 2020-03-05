@@ -1,6 +1,6 @@
 package alirezat775.carouselview
 
-import alirezat775.lib.carouselview.CarouselAdapter
+import ebnrdwan.lib.slider.SliderAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,18 +9,12 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.item_carousel.view.*
 import kotlinx.android.synthetic.main.item_empty_carousel.view.*
 
-/**
- * Author:  Alireza Tizfahm Fard
- * Date:    2019-06-14
- * Email:   alirezat775@gmail.com
- */
-
-class SampleAdapter : CarouselAdapter() {
+class SampleAdapter : SliderAdapter() {
 
     private val EMPTY_ITEM = 0
     private val NORMAL_ITEM = 1
 
-    private var vh: CarouselViewHolder? = null
+    private var vh: SliderViewHolder? = null
     var onClick: OnClick? = null
 
     fun setOnClickListener(onClick: OnClick?) {
@@ -34,7 +28,7 @@ class SampleAdapter : CarouselAdapter() {
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarouselViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SliderViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return if (viewType == NORMAL_ITEM) {
             val v = inflater.inflate(R.layout.item_carousel, parent, false)
@@ -47,7 +41,7 @@ class SampleAdapter : CarouselAdapter() {
         }
     }
 
-    override fun onBindViewHolder(holder: CarouselViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SliderViewHolder, position: Int) {
         when (holder) {
             is MyViewHolder -> {
                 vh = holder
@@ -62,7 +56,7 @@ class SampleAdapter : CarouselAdapter() {
         }
     }
 
-    inner class MyViewHolder(itemView: View) : CarouselViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View) : SliderViewHolder(itemView) {
 
         var icon: ImageView = itemView.imgContinent
 
@@ -72,7 +66,7 @@ class SampleAdapter : CarouselAdapter() {
 
     }
 
-    inner class EmptyMyViewHolder(itemView: View) : CarouselViewHolder(itemView) {
+    inner class EmptyMyViewHolder(itemView: View) : SliderViewHolder(itemView) {
         var titleEmpty: TextView = itemView.item_empty_text
     }
 

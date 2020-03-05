@@ -1,4 +1,4 @@
-package alirezat775.lib.carouselview.helper
+package ebnrdwan.lib.slider.helper
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -20,7 +20,6 @@ object Animations {
     const val fadedIn: Float = 1f
     const val reverse: Boolean = false
     const val repeatCount: Int = 0
-    const val lottieStart: Float = 0.5f
 }
 
 fun View.translateFromStart(

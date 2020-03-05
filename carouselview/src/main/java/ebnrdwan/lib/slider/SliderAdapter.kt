@@ -1,20 +1,12 @@
-package alirezat775.lib.carouselview
+package ebnrdwan.lib.slider
 
-import alirezat775.lib.carouselview.helper.ViewHelper
-import alirezat775.lib.carouselview.helper.fade
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
-import android.os.Build
+import ebnrdwan.lib.slider.helper.ViewHelper
 import android.view.View
-import android.view.animation.BaseInterpolator
-import android.view.animation.DecelerateInterpolator
-import android.view.animation.OvershootInterpolator
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
 
-abstract class CarouselAdapter : RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
+abstract class SliderAdapter : RecyclerView.Adapter<SliderAdapter.SliderViewHolder>() {
 
     companion object {
         const val REMOVE = 1
@@ -23,7 +15,7 @@ abstract class CarouselAdapter : RecyclerView.Adapter<CarouselAdapter.CarouselVi
 
     private lateinit var recyclerView: RecyclerView
     private var enableSlider = false
-    private var items: MutableList<CarouselModel> = ArrayList()
+    private var items: MutableList<ISliderModel> = ArrayList()
 
     private fun imageOption(view: View) {
         view.layoutParams.width = Math.round(ViewHelper.getScreenWidth().toDouble()).toInt()
@@ -54,30 +46,30 @@ abstract class CarouselAdapter : RecyclerView.Adapter<CarouselAdapter.CarouselVi
     /**
      * @return list items
      */
-    fun getItems(): MutableList<CarouselModel> {
+    fun getItems(): MutableList<ISliderModel> {
         return items
     }
 
-    fun operation(item: CarouselModel, operation: Int) {
+    fun operation(item: ISliderModel, operation: Int) {
         when (operation) {
             ADD -> add(item)
             REMOVE -> remove(item)
         }
     }
 
-    fun addAll(items: MutableList<CarouselModel>) {
+    fun addAll(items: MutableList<ISliderModel>) {
         this.items = items
         notifyDataSetChanged()
     }
 
-    private fun add(item: CarouselModel) {
+    private fun add(item: ISliderModel) {
         recyclerView.post {
             notifyItemInserted(itemCount - 1)
             getItems().add(item)
         }
     }
 
-    private fun remove(item: CarouselModel) {
+    private fun remove(item: ISliderModel) {
         notifyItemRemoved(getItems().indexOf(item))
         getItems().remove(item)
     }
@@ -90,7 +82,7 @@ abstract class CarouselAdapter : RecyclerView.Adapter<CarouselAdapter.CarouselVi
         this.enableSlider = enableSlider
     }
 
-    open inner class CarouselViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    open inner class SliderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
             if (isEnableSlider()) imageOption(itemView)
         }

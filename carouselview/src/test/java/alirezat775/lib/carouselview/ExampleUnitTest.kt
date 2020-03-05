@@ -1,4 +1,4 @@
-package alirezat775.lib.carouselview
+package ebnrdwan.lib.slider
 
 import org.junit.Test
 

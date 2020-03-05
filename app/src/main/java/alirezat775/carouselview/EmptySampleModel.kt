@@ -1,8 +1,8 @@
 package alirezat775.carouselview
 
-import alirezat775.lib.carouselview.CarouselModel
+import ebnrdwan.lib.slider.ISliderModel
 
-class EmptySampleModel constructor(private val text: String) : CarouselModel() {
+class EmptySampleModel constructor(private val text: String) : ISliderModel {
 
     fun getText(): String {
         return text

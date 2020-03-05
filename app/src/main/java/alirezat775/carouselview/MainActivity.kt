@@ -1,9 +1,9 @@
 package alirezat775.carouselview
 
-import alirezat775.lib.carouselview.Carousel
-import alirezat775.lib.carouselview.CarouselLazyLoadListener
-import alirezat775.lib.carouselview.CarouselListener
-import alirezat775.lib.carouselview.CarouselView
+import ebnrdwan.lib.slider.SliderComponent
+import ebnrdwan.lib.slider.SliderLazyLoadListener
+import ebnrdwan.lib.slider.SliderListener
+import ebnrdwan.lib.slider.SliderRecyclerView
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -19,12 +19,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val adapter = SampleAdapter()
-        val carousel = Carousel(this, carousel_view, adapter)
-        carousel.setOrientation(CarouselView.HORIZONTAL, false)
+        val carousel =
+            SliderComponent(this, carousel_view, adapter)
+        carousel.setOrientation(SliderRecyclerView.HORIZONTAL, false)
         carousel.autoScroll(false, 5000, true)
         carousel.scaleView(true)
-        carousel.lazyLoad(true, object : CarouselLazyLoadListener {
-            override fun onLoadMore(page: Int, totalItemsCount: Int, view: CarouselView) {
+        carousel.lazyLoad(true, object :
+            SliderLazyLoadListener {
+            override fun onLoadMore(page: Int, totalItemsCount: Int, view: SliderRecyclerView) {
                 if (hasNextPage) {
                     Log.d(TAG, "load new item on lazy mode")
 //                    carousel.add(SampleModel(R.drawable.border_selection))
@@ -45,7 +47,8 @@ class MainActivity : AppCompatActivity() {
 //        carousel.scrollSpeed(100f)
 //        carousel.enableSlider(true)
 
-        carousel.addCarouselListener(object : CarouselListener {
+        carousel.addSliderListener(object :
+            SliderListener {
             override fun onPositionChange(position: Int) {
                 Log.d(TAG, "currentPosition : $position")
             }

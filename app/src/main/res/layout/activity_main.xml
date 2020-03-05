@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
         tools:context=".MainActivity">
 
-    <alirezat775.lib.carouselview.CarouselView
+    <ebnrdwan.lib.slider.SliderRecyclerView
         android:id="@+id/carousel_view"
         android:layout_width="match_parent"
         android:layout_height="300dp"

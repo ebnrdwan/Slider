@@ -1,13 +1,8 @@
-package alirezat775.lib.carouselview.helper
+package ebnrdwan.lib.slider.helper
 
 import android.content.res.Resources
 
 
-/**
- * Author:  Alireza Tizfahm Fard
- * Date:    2019-06-14
- * Email:   alirezat775@gmail.com
- */
 
 object ViewHelper {
 

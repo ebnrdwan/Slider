@@ -1,16 +1,11 @@
-package alirezat775.lib.carouselview.helper
+package ebnrdwan.lib.slider.helper
 
-import alirezat775.lib.carouselview.CarouselLayoutManager
+import ebnrdwan.lib.slider.SliderLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-/**
- * Author:  Alireza Tizfahm Fard
- * Date:    2019-06-14
- * Email:   alirezat775@gmail.com
- */
 
-abstract class EndlessListener(private val carouselLayoutManager: CarouselLayoutManager) :
+abstract class EndlessListener(private val sliderLayoutManager: SliderLayoutManager) :
     RecyclerView.OnScrollListener() {
 
     private val visibleThreshold = 5
@@ -32,8 +27,8 @@ abstract class EndlessListener(private val carouselLayoutManager: CarouselLayout
     }
 
     override fun onScrolled(view: RecyclerView, dx: Int, dy: Int) {
-        val lastVisibleItemPosition = (carouselLayoutManager as LinearLayoutManager).findLastVisibleItemPosition()
-        val totalItemCount = carouselLayoutManager.itemCount
+        val lastVisibleItemPosition = (sliderLayoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+        val totalItemCount = sliderLayoutManager.itemCount
 
         if (totalItemCount < previousTotalItemCount) {
             currentPage = startingPageIndex
