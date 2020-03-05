@@ -116,7 +116,7 @@ class SliderLayoutManager(context: Context?, orientation: Int, reverseLayout: Bo
 
     private fun fadeBorder(view: View, alpha: Float, subtractade: Float) {
         val border = view.findViewById<View>(R.id.border_view)
-        if (alpha in 0.9f..1.0f)
+        if (alpha in 0.75f..1.0f)
             border?.alpha = alpha
         else border?.alpha = 0.0f
 
@@ -124,7 +124,7 @@ class SliderLayoutManager(context: Context?, orientation: Int, reverseLayout: Bo
 
     private fun fadeView(view: View, alpha: Float, subtractade: Float) {
 
-        if (alpha in 0.75f..1.0f)
+        if (alpha in 0.90f..1.0f)
             view.alpha = alpha
         else view.alpha = alpha - subtractade
 
