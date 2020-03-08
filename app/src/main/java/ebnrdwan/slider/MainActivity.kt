@@ -21,15 +21,7 @@ class MainActivity : AppCompatActivity() {
         val msliderManager = MSliderLayoutManager(this, SliderRecyclerView.HORIZONTAL, false)
         val sliderComponent =
             SliderComponent(msliderManager, slider_view, adapter)
-        sliderComponent.autoScroll(false, 5000, true)
         sliderComponent.setCalculateCenterThreshold(true)
-
-        adapter.setOnClickListener(object :
-            SampleAdapter.OnClick {
-            override fun click(model: SampleModel) {
-//                slider.remove(model)
-            }
-        })
 
         sliderComponent.addSliderListener(object :
             SliderListener {
