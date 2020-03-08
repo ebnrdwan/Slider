@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 
 
- class SliderLayoutManager(context: Context?, orientation: Int, reverseLayout: Boolean) :
+abstract class SliderLayoutManager(context: Context?, orientation: Int, reverseLayout: Boolean) :
     LinearLayoutManager(context, orientation, reverseLayout) {
 
-    private val shrinkAmount = 0.4f
-    private val shrinkDistance = 0.9f
+    abstract val shrinkAmount: Float
+    abstract val shrinkDistance: Float
     private var smoothScroller: SmoothScroller? = null
+
 
     var anchor: Int = 0
 
@@ -26,6 +27,12 @@ import kotlin.math.abs
             smoothScroller = SmoothScroller(context)
         }
     }
+
+    /**
+     * @param child view item
+     * @param centerThreshold float threshold represent the distance from center point
+     */
+    abstract fun onCenterThresholdChange(child: View, centerThreshold: Float)
 
     /**
      * @param calculate the distance from center point threshold item
@@ -102,9 +109,6 @@ import kotlin.math.abs
                     val d = d1.coerceAtMost(abs(midpoint - childMidpoint))
                     val centerThreshold = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
                     onCenterThresholdChange(child, centerThreshold)
-
-                    fadeBorder(child, scale, 0.5f)
-                    fadeView(child, scale, 0.3f)
                 }
 
             }
@@ -114,21 +118,7 @@ import kotlin.math.abs
         }
     }
 
-    private fun fadeBorder(view: View, alpha: Float, subtractade: Float) {
-        val border = view.findViewById<View>(R.id.border_view)
-        if (alpha in 0.75f..1.0f)
-            border?.alpha = alpha
-        else border?.alpha = 0.0f
 
-    }
-
-    private fun fadeView(view: View, alpha: Float, subtractade: Float) {
-
-        if (alpha in 0.90f..1.0f)
-            view.alpha = alpha
-        else view.alpha = alpha - subtractade
-
-    }
 
     /**
      * @param scrollSpeed milliSecond per inch
