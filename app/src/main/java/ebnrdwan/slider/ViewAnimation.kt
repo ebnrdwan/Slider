@@ -8,6 +8,8 @@ import android.view.View
 import android.view.animation.BaseInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
+import androidx.annotation.RequiresApi
+
 object Animations {
     const val Duration: Long = 500
     const val Delay: Long = 500
@@ -23,6 +25,7 @@ object Animations {
     const val lottieStart: Float = 0.5f
 }
 
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
 fun View.translateFromStart(
     interpolator: BaseInterpolator = OvershootInterpolator(),
     reverse: Boolean = Animations.reverse,

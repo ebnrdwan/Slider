@@ -23,12 +23,6 @@ abstract class SliderAdapter : RecyclerView.Adapter<SliderAdapter.SliderViewHold
         view.requestLayout()
     }
 
-
-    private fun fadeOption(view: View) {
-        view.layoutParams.width = Math.round(ViewHelper.getScreenWidth().toDouble()).toInt()
-        view.layoutParams.height = Math.round(view.layoutParams.width * 0.60).toInt()
-        view.requestLayout()
-    }
     override fun getItemCount(): Int {
         return items.size
     }

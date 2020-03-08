@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var hasNextPage: Boolean = true
     val TAG: String = this::class.java.name
 
     override fun onCreate(savedInstanceState: Bundle?) {
