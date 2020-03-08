@@ -1,13 +1,12 @@
 package ebnrdwan.slider
 
 import alirezat775.sliderview.R
-import ebnrdwan.lib.slider.SliderComponent
-import ebnrdwan.lib.slider.SliderLazyLoadListener
-import ebnrdwan.lib.slider.SliderListener
-import ebnrdwan.lib.slider.SliderRecyclerView
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import ebnrdwan.lib.slider.SliderComponent
+import ebnrdwan.lib.slider.SliderListener
+import ebnrdwan.lib.slider.SliderRecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,11 +18,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val adapter = SampleAdapter()
+        val msliderManager = MSliderLayoutManager(this, SliderRecyclerView.HORIZONTAL, false)
         val sliderComponent =
-            SliderComponent(this, slider_view, adapter)
-        sliderComponent.setOrientation(SliderRecyclerView.HORIZONTAL, false)
+            SliderComponent(msliderManager, slider_view, adapter)
         sliderComponent.autoScroll(false, 5000, true)
-        sliderComponent.scaleView(true)
+        sliderComponent.setCalculateCenterThreshold(true)
 
         adapter.setOnClickListener(object :
             SampleAdapter.OnClick {

@@ -7,6 +7,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.math.abs
 
 
  class SliderLayoutManager(context: Context?, orientation: Int, reverseLayout: Boolean) :
@@ -18,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 
     var anchor: Int = 0
 
-    private var scaleView = true
+    private var calculate = true
 
     init {
         if (smoothScroller == null) {
@@ -27,14 +28,14 @@ import androidx.recyclerview.widget.RecyclerView
     }
 
     /**
-     * @param scaleView set center view scale
+     * @param calculate the distance from center point threshold item
      */
-    fun scaleView(scaleView: Boolean) {
-        this.scaleView = scaleView
+    fun setCalculateCenterThreshold(calculate: Boolean) {
+        this.calculate = calculate
     }
 
-    private fun isScaleView(): Boolean {
-        return scaleView
+    private fun isCalculateCenterThreshold(): Boolean {
+        return calculate
     }
 
     /**
@@ -57,7 +58,7 @@ import androidx.recyclerview.widget.RecyclerView
         val orientation = orientation
         if (orientation == VERTICAL) {
             val scrolled = super.scrollVerticallyBy(dy, recycler, state)
-            if (isScaleView()) {
+            if (isCalculateCenterThreshold()) {
                 val midpoint = height / 2f
                 val d0 = 0f
                 val d1 = shrinkDistance * midpoint
@@ -66,10 +67,10 @@ import androidx.recyclerview.widget.RecyclerView
                 for (i in 0 until childCount) {
                     val child = getChildAt(i)
                     val childMidpoint = (getDecoratedBottom(child!!) + getDecoratedTop(child)) / 2f
-                    val d = Math.min(d1, Math.abs(midpoint - childMidpoint))
-                    val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
-                    child.scaleX = scale
-                    child.scaleY = scale
+                    val d = d1.coerceAtMost(abs(midpoint - childMidpoint))
+                    val centerThreshold = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
+
+                    onCenterThresholdChange(child, centerThreshold)
 
                 }
             }
@@ -89,7 +90,7 @@ import androidx.recyclerview.widget.RecyclerView
         val orientation = orientation
         if (orientation == HORIZONTAL) {
             val scrolled = super.scrollHorizontallyBy(dx, recycler, state)
-            if (isScaleView()) {
+            if (isCalculateCenterThreshold()) {
                 val midpoint = width / 2f
                 val d0 = 0f
                 val d1 = shrinkDistance * midpoint
@@ -98,10 +99,9 @@ import androidx.recyclerview.widget.RecyclerView
                 for (i in 0 until childCount) {
                     val child = getChildAt(i)
                     val childMidpoint = (getDecoratedRight(child!!) + getDecoratedLeft(child)) / 2f
-                    val d = Math.min(d1, Math.abs(midpoint - childMidpoint))
-                    val scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
-                    child.scaleX = scale
-                    child.scaleY = scale
+                    val d = d1.coerceAtMost(abs(midpoint - childMidpoint))
+                    val centerThreshold = s0 + (s1 - s0) * (d - d0) / (d1 - d0)
+                    onCenterThresholdChange(child, centerThreshold)
 
                     fadeBorder(child, scale, 0.5f)
                     fadeView(child, scale, 0.3f)

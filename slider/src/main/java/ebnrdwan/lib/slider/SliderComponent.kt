@@ -1,40 +1,34 @@
 package ebnrdwan.lib.slider
 
+import androidx.annotation.NonNull
+import androidx.recyclerview.widget.RecyclerView
 import ebnrdwan.lib.slider.helper.EndlessListener
 import ebnrdwan.lib.slider.helper.ViewHelper
-import androidx.annotation.NonNull
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 
 
 class SliderComponent constructor(
-    private var appCompatActivity: AppCompatActivity,
+    private var manager: SliderLayoutManager,
     @NonNull private var sliderRecyclerView: SliderRecyclerView,
     @NonNull private var adapter: SliderAdapter
 ) {
 
-    private var manager: SliderLayoutManager? = null
+
     private var sliderLazyLoadListener: SliderLazyLoadListener? = null
 
     init {
-        sliderRecyclerView.layoutManager = getManager()
+        initializeManager(orientation = manager.orientation)
         sliderRecyclerView.adapter = adapter
         sliderRecyclerView.isAutoScroll = false
     }
 
     /**
      * @param orientation set VERTICAL/HORIZONTAL
-     * @param reverseLayout set RTL layout
      */
-    fun setOrientation(
-        @SliderRecyclerView.SliderOrientation orientation: Int, reverseLayout: Boolean,
+    private fun initializeManager(
+        @SliderRecyclerView.SliderOrientation orientation: Int,
         enablePadding: Boolean = true
     ) {
-        manager = SliderLayoutManager(
-            appCompatActivity,
-            orientation,
-            reverseLayout
-        )
+
         sliderRecyclerView.layoutManager = manager
         val padding: Int
         when (orientation) {
@@ -81,17 +75,16 @@ class SliderComponent constructor(
     }
 
     /**
-     * @param scaleView enable scaleView item
+     * @param centerThreshold enable calculating the distance from center point threshold item
      */
-    fun scaleView(scaleView: Boolean) {
-        getManager()?.scaleView(scaleView)
+    fun setCalculateCenterThreshold(centerThreshold: Boolean) {
+        getManager()?.setCalculateCenterThreshold(centerThreshold)
     }
 
     /**
      * @return SliderLayoutManager
      */
     private fun getManager(): SliderLayoutManager? {
-        if (manager == null) setOrientation(SliderRecyclerView.VERTICAL, false)
         return manager
     }
 
