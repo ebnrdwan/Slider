@@ -25,24 +25,13 @@ class MainActivity : AppCompatActivity() {
         sliderComponent.setOrientation(SliderRecyclerView.HORIZONTAL, false)
         sliderComponent.autoScroll(false, 5000, true)
         sliderComponent.scaleView(true)
-        sliderComponent.lazyLoad(true, object :
-            SliderLazyLoadListener {
-            override fun onLoadMore(page: Int, totalItemsCount: Int, view: SliderRecyclerView) {
-                if (hasNextPage) {
-                    Log.d(TAG, "load new item on lazy mode")
 
-                    hasNextPage = false
-                }
-            }
-        })
         adapter.setOnClickListener(object :
             SampleAdapter.OnClick {
             override fun click(model: SampleModel) {
 //                slider.remove(model)
             }
         })
-//        slider.scrollSpeed(100f)
-//        slider.enableSlider(true)
 
         sliderComponent.addSliderListener(object :
             SliderListener {
